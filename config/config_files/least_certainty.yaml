@@ -1,0 +1,5 @@
+id: "least_certainty"
+base_config: 'labelled'
+data:
+  params:
+    data_parts: ['labelled', 'least_certainty']

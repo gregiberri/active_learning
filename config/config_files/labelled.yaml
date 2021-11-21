@@ -1,0 +1,5 @@
+id: "labelled"
+base_config: 'base'
+data:
+  params:
+    data_parts: ['labelled']

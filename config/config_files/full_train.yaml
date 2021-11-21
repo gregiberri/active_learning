@@ -1,0 +1,5 @@
+id: "full_train"
+base_config: 'base'
+data:
+  params:
+    data_parts: ['train']

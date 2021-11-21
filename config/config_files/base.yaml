@@ -1,0 +1,53 @@
+id: "base"
+env:
+  result_dir: 'results'
+  random_seed: 0
+  epochs: 50
+  save_preds: False
+metrics:
+  goal_metric: 'F1'
+  save_metrics:
+    Accuracy: {num_classes: 10, average: 'macro'}
+    Precision: {num_classes: 10, average: 'macro'}
+    Recall: {num_classes: 10, average: 'macro'}
+    F1: {num_classes: 10, average: 'macro'}
+data:
+  name: "cifar10"
+  params:
+    dataset_path: 'cifar-10-batches-py'
+    data_parts: ['labelled']
+
+    batch_size: 512
+    input_size: [32, 32]
+    input_channels: 3
+    num_classes: 10
+
+    # transforms must be a list to make sure to preserve the order
+    transforms: [['ToPILImage', []],
+                 ['ColorJitter', [0.3, 0.3, 0.3, 0.2]],
+                 ['RandomHorizontalFlip', []],
+                 ['ToTensor', []],
+                 ['Normalize', [[0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010]]]]
+
+    gpu_to_use: 0
+    workers: 4
+    load_into_memory: false
+model:
+  name: "resnet18"
+  params:
+    num_classes: 10
+    pretrained: true
+loss:
+  name: 'CrossEntropyLoss'
+  params:
+    weight: null
+optimizer:
+  name: 'RAdam'
+  params:
+    lr: 0.002
+    weight_decay: 0.001
+lr_policy:
+  name: 'ReduceLROnPlateau'
+  params:
+    mode: 'max'
+    patience: 5

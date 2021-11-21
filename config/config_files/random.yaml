@@ -1,0 +1,5 @@
+id: "random"
+base_config: 'labelled'
+data:
+  params:
+    data_parts: ['labelled', 'random']
