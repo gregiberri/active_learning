@@ -1,4 +1,4 @@
-name: traffic_sign_recognition
+name: active_learning
 channels:
   - pytorch
   - conda-forge
