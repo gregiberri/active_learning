@@ -1,4 +1,26 @@
-# Traffic light recognition
+# Active learning
+
+### Introduction
+The main idea behind *active learning* is that instead of labelling every data we have, 
+we should just label the ones that offers the best model improvement. 
+However, without labeling them, we do not have an exact measurement on how much particular 
+datapoints would improve it. We have to rely on the properties of our model's 
+preformance on unlabelled data to chose which ones are the most promising ones to 
+label and include in the training set.
+
+For the active learning experiments, the first 1000 image of the first batch file was used as 
+already labelled, and another 5000 was selected as 'new labelings' with different techniques. 
+Finally, new models were trained in the original labelled and the newly labelled data, 
+and the methods were compared to each other.
+
+The techniques in these experiments used for picking new data to label were 
+(for further information refer to [this](https://towardsdatascience.com/active-learning-say-yeah-7598767806b2)
+ site):
+- random selection
+- least certainty
+- least certainty margin
+- biggest entropy
+
 ### Requirements
 The required packages can be found in *config/env_files/active_learing_env.yml*. 
 Dependencies could be installed by running:
